@@ -42,34 +42,36 @@ app.add_middleware(
 
 
 @app.get("/")
-def read_root():
+async def read_root():
    x = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
    d = "high performance, easy to learn, fast to code, ready for production." 
    return [{"DateTime": x}, {"FastAPI": d}]
 
 
 @app.get("/api/all_years")
-def all_years():
+async def all_years():
    print("-"*58)
    ds = get_all_years()   
    return ds
 
+
 @app.post("/api/loan_amt")
-def loan_amt( selectYear: SelectYear ):
+async def loan_amt( selectYear: SelectYear ):
    ds = get_loan_amt(selectYear.yyyy)   
    return ds
 
 
 @app.post("/api/loan_count")
-def loan_count( selectYear: SelectYear ):
+async def loan_count( selectYear: SelectYear ):
    ds = get_loan_count(selectYear.yyyy)   
    return ds
 
 
 @app.post("/api/default_amt")
-def default_amt( selectYear: SelectYear ):
+async def default_amt( selectYear: SelectYear ):
    ds = get_default_amt(selectYear.yyyy)   
    return ds  
+
 
 @app.post("/api/default_count")
 async def default_count( selectYear: SelectYear ):
@@ -78,30 +80,31 @@ async def default_count( selectYear: SelectYear ):
 
 
 @app.post("/api/month_loan")
-def month_loan( selectYear: SelectYear ):
+async def month_loan( selectYear: SelectYear ):
    ds = get_month_loan(selectYear.yyyy)   
    return ds
 
+
 @app.post("/api/month_count")
-def month_count( selectYear: SelectYear ):
+async def month_count( selectYear: SelectYear ):
    ds = get_month_count(selectYear.yyyy)   
    return ds
 
 
 @app.post("/api/purpose")
-def purpose( selectYear: SelectYear ):
+async def purpose( selectYear: SelectYear ):
    ds = get_purpose(selectYear.yyyy)   
    return ds
 
 
 @app.post("/api/occupation")
-def occupation( selectYear: SelectYear ):
+async def occupation( selectYear: SelectYear ):
    ds = get_occupation(selectYear.yyyy)   
    return ds
 
 
 @app.post("/api/ml_predict")
-def occupation( newXs: NewXs ):  
+async def occupation( newXs: NewXs ):  
    x = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
    print("ml_predict", x)      
    y_pred = predict_with_ml(dict(newXs))   
@@ -109,7 +112,7 @@ def occupation( newXs: NewXs ):
 
 
 @app.post("/api/scorecard_predict")
-def occupation( input_data: InputData ):  
+async def occupation( input_data: InputData ):  
    x = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
    print("scorecard_predict", x)   
    res = get_predict_report(input_data)   
@@ -117,7 +120,7 @@ def occupation( input_data: InputData ):
 
 
 @app.get("/api/default_info")
-def default_info():
+async def default_info():
    x = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
    print("query mongodb - default info", x)         
    dict = default_condition()
@@ -125,7 +128,7 @@ def default_info():
 
 
 @app.get("/api/default_age")
-def default_age():  
+async def default_age():  
    x = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
    print("query mongodb - default age", x)  
    dict = default_condition_age()
@@ -133,6 +136,6 @@ def default_age():
 
 
 @app.get("/tst")
-def tst_root():
+async def tst_root():
    x = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')    
    return [{"DateTime": x}]
