@@ -1,0 +1,66 @@
+version: "3"
+services:
+    postgres-db:
+        image: postgres:13.2-alpine
+        container_name: pg_01        
+        environment:
+            POSTGRES_DB: ${POSTGRES_DB}
+            POSTGRES_USER: ${POSTGRES_USER}
+            POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}  
+            TZ: ${TZ}                   
+        volumes:
+            - postgres-db-data_01:/var/lib/postgresql/data
+        ports:
+            - "${POSTGRES_PORT}:5432"           
+    pgadmin:
+        image: dpage/pgadmin4:8
+        container_name: pg_admin_01        
+        environment:
+            PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+            PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+            PGADMIN_LISTEN_PORT: ${PGADMIN_LISTEN_PORT}
+            TZ: ${TZ}
+        ports:
+            - "80:80"
+        volumes:
+            - pgadmin-data_01:/var/lib/pgadmin  
+    mongo-db:
+        image: mongo:7.0
+        container_name: mongodb_01        
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+            MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+            TZ: ${TZ}
+        volumes:        
+        - mongo_volumes_01:/data/db
+        ports:
+        - "${MONGO_PORT}:27017" 
+    backend-fastapi:
+        build:
+            context: .
+            dockerfile: Dockerfile_fastapi
+        container_name: fastapi_01 
+        image: img_fastapi_01          
+        environment:
+            TZ: ${TZ}             
+        ports:
+            - "${FASTAPI_PORT}:80"
+        depends_on:
+            - postgres-db
+            - mongo-db        
+    frendend-django:        
+        build: 
+            context: .
+            dockerfile: Dockerfile_django
+        container_name: django_01    
+        image: img_django_01 
+        environment:
+            TZ: ${TZ}     
+        command: "python3 manage.py runserver 0.0.0.0:8000"     
+        ports:
+        - "${DJANGO_APP_PORT}:8000"                                               
+volumes:
+    postgres-db-data_01:
+    pgadmin-data_01: 
+    mongo_volumes_01:   

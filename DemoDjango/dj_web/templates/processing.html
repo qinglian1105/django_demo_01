@@ -1,0 +1,65 @@
+{% extends 'base.html'%}
+
+{% block title %}{{title}}{% endblock %}
+{% block user_name %}{{user_name}}{% endblock %}
+
+{% block cards %}  
+
+<div class="row">
+    <div class="col-md-6 page-header">        
+        <h2 class="page-title">/{{title}}</h2><br>               
+    </div>
+</div>
+
+<div class="row">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Default</div>
+                <div class="card-body">
+                    <p class="card-title"></p>                        
+                    <div class="chart" id="container_01" style="width:600px; height:600px;"></div>                         
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Default by Age</div>
+                <div class="card-body">
+                    <p class="card-title"></p>                        
+                    <div class="chart" id="container_02" style="width:600px; height:600px;"></div>                        
+                </div>
+            </div>
+        </div>                                        
+    </div>
+</div>        
+
+
+
+
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="{% static 'assets/js/my_script_01.js' %}"></script>
+
+
+</script>
+
+ 
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+

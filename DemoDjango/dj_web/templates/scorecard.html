@@ -1,0 +1,107 @@
+{% extends 'base.html'%}
+
+{% block title %}{{title}}{% endblock %}
+{% block user_name %}{{user_name}}{% endblock %}
+
+{% block cards %}  
+
+<div class="row">
+    <div class="col-md-6 page-header">        
+        <h2 class="page-title">/{{title}}</h2><br>                        
+    <div>                       
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">請輸入變數(貸款人資訊)</div>
+            <div class="card-body">
+                <h5 class="card-title"></h5>  
+                    <div class="row g-2">                                                     
+                        <div class="mb-2 col-md-6">
+                            <label class="form-label">變數01 - 每年收入USD(數值 >1,000)</label>
+                            <input id="annual_inc_bin" class="form-control">
+                        </div>
+                        <div class="mb-2 col-md-6">
+                            <label  class="form-label">變數02 - 貸款金額USD(數值 >1,000)</label>
+                            <input id="loan_amnt_bin" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row g-2"> 
+                        <div class="mb-2 col-md-6">
+                            <label class="form-label">變數03 - 利率(數值 >5.00)</label>
+                            <input id="int_rate_bin" class="form-control">
+                        </div>                    
+                        <div class="mb-2 col-md-6">
+                            <label class="form-label">變數04 - 貸款目的</label>
+                            <!-- <input id="loan_amnt_bin" class="form-control"> -->
+                            <select id="purpose" class="form-select" required="">
+                                <option value="" selected="">Choose...</option>
+                                {% for p in loan_purpose %}      
+                                    <option value={{forloop.counter}}>{{p}}</option>    
+                                {% endfor %}                              
+                            </select>
+
+                        </div>  
+                    </div>
+                    <div class="row g-2">                         
+                        <div class="mb-2 col-md-6">
+                            <label class="form-label">變數05 - LC評級</label>                            
+                            <select id="grade" class="form-select" required="">
+                                <option value="" selected="">Choose...</option>
+                                <option value="A">A</option>
+                                <option value="B">B</option>
+                                <option value="C">C</option>
+                                <option value="D">D</option>
+                                <option value="E">E</option>
+                                <option value="F">F</option>
+                                <option value="G">G</option>                                
+                            </select>
+                        </div> 
+
+                        <div class="mb-2 col-md-6">
+                            <label class="form-label">變數06 - 住宅所有權</label>                            
+                            <select id="home_ownership" class="form-select" required="">
+                                <option value="" selected="">Choose...</option>
+                                <option value="OWN">OWN</option>
+                                <option value="MORTGAGE">MORTGAGE</option>
+                                <option value="RENT">RENT</option>
+                                <option value="OTHER">OTHER</option>
+                            </select>
+                        </div>                                           
+                    </div>
+
+                    <div class="row g-2">                         
+                        <div class="mb-2 col-md-6">
+                            <label class="form-label">變數07 - 是否有破產記錄？</label>                            
+                            <select id="pub_rec_bankruptcies" class="form-select" required="">
+                                <option value="" selected="">Choose...</option>
+                                <option value="Y">Y</option>
+                                <option value="N">N</option>                               
+                            </select>
+                        </div>                           
+                                              
+                        <div class="col text-center"><br>                                                                                                                                                                                 
+                            <button class="btn btn-primary" onclick="scorecard_predict()">Predict Score</button>
+                            <button class="btn btn-primary" onclick="scorecard_clean()">Clean Variables</button>                          
+                        </div>                        
+                    </div>                                     
+                   
+                    <div id="scorecard_predict_result" style="color:blue;"></div>
+
+                    <div class="mb-2">
+                        <div id="chart_container" style="width:600px;min-height:300px;"></div>                      
+                    </div>                                                                                                 
+            </div>            
+        </div>            
+    </div>   
+
+</div>
+
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="https://fastly.jsdelivr.net/npm/echarts@5.5.1/dist/echarts.min.js"></script>
+<script src="{% static 'assets/js/my_functions_02.js' %}"></script>
+
+
+{% endblock %}
+

@@ -1,0 +1,34 @@
+{% extends 'base.html'%}
+
+{% block title %}{{title}}{% endblock %}
+{% block user_name %}{{user_name}}{% endblock %}
+
+{% block cards %}     
+    <div class="row">
+        <div class="col-md-12 page-header">                    
+            <h2 class="page-title">/{{title}}</h2><br>                        
+            <div class="card">            
+                <div class="card-body" style="color:#4d4dff;">                    
+                    <p><h5 style="font-weight: bold; color: #0000b3;">Introduction</h5></p><br>
+                    <p><h7 style="font-weight: bold; color: #0000b3;">Ⅰ. Framework</h7></p>
+                    <p>一個有登入與登出的簡易網站、前後端交互、數據分析圖表呈現。</p>
+                    <p>前端使用Django Web Framework、JavaScript，樣式套用boostrap-simple-admin作簡化，圖表庫Chart.js及ECharts。
+                    <p>後端採用FastAPI，資料庫利用PostgreSQL及MongoDB。
+                    <p><h7 style="font-weight: bold; color: #0000b3;">Ⅱ. Data</h7></p>
+                    <p>網頁示範內容之資料來自Kaggle，分別為Lending Club Loan Data及Credit Risk Dataset。</p>
+                    <p>Lending Club Loan Data資料集，匯入PostgreSQL，作簡易的探索性分析(Exploratory Data Analysis, EDA)，</p>
+                    <p>並且分別建立機器學習模型作違約預測、信用評分卡(Credit Scorecards)模型作評分預測。</p>                    
+                    <p>Credit Risk Dataset，該資料集則匯入MongoDB，僅作簡單違約分析，主要為ECharts展示。</p>
+                    <p><h7 style="font-weight: bold; color: #0000b3;">Ⅲ. Description</h7></p>
+                    <p>主要為展示程式技術，故僅列出幾個統計圖表，如 [選單二] 的「資料視覺化分析」，有下拉式選單切換年度，更新各圖表數據。
+                    <p>另外，違約預測分析 [選單三] 「機器學習」只使用幾個變數訓練模型，後端佈署多個演算法來選擇作預測的API供前端調用，</p>  
+                    <p>在Form輸入各項數據送出後在下方返回預測結果。</p>                                           
+                    <p>接著，[選單四] 為「信用評分預測」，即 Credit Scorecards，送出輸入資料，調用Scorecard模型API計算，於下方返信用分數(儀表盤)。</p>                    
+                    <p>[選單五] 為「物件檢測」，檢測物件為食物，可將圖片檔上傳給後端YOLOv5封裝之API處理，於下方返回檢測圖片。</p>
+                    <p>[選單六] 「違約分析」 調用API取MongoDB資料，再使用 ECharts 呈現違約狀況圖表。</p>  
+                    <p>最後，[選單七] 測試404網頁。 </p>                                          
+                </div>            
+            </div>    
+        </div>
+    </div>    
+{% endblock %}

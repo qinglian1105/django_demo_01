@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link href="{% static 'assets/vendor/fontawesome/css/fontawesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/fontawesome/css/solid.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/fontawesome/css/brands.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/css/master.css' %}" rel="stylesheet">
+    <link href="{% static 'assets/vendor/flagiconcss/css/flag-icon.min.css' %}" rel="stylesheet">        
+</head>
+
+<body>   
+    <div class="wrapper">
+        <nav id="sidebar" class="">
+            <div class="sidebar-header">
+                <img src="{% static 'assets/img/dl.png' %}" alt="" class="rounded mx-auto d-block" >
+
+            </div>
+            <ul class="list-unstyled components text-secondary">
+                <li>
+                    <a href={{menu.home}}><i class="fas fa-home"></i>首頁<br>(Home)</a>
+                </li>
+                <li>
+                    <a href={{menu.dashboard}}><i class="fas fa-chart-bar"></i>資料視覺化分析<br>(Dashboard)</a>
+                </li>
+                
+                <li>
+                    <a href="{{menu.machinelearning}}"><i class="fas fa-sitemap"></i>機器學習<br>(Default Prediction)</a>
+                </li>  
+
+                <li>
+                    <a href="{{menu.scorecard}}"><i class="fas fa-sitemap"></i>信用評分預測<br>(Credit Scorecards)</a>
+                </li>  
+
+                <li>
+                    <a href="{{menu.yolov5}}"><i class="fas fa-sitemap"></i>物件檢測<br>(with YOLOv5)</a>
+                </li>  
+                
+                <li>
+                    <a href="{{menu.processing}}"><i class="fas fa-cog"></i>違約分析<br>(with ECharts)</a>
+                </li>
+
+                <li>
+                    <a href="{{menu.demo404}}"><i class="fas fa-copy"></i>Page Test<br>(Error 404)</a>                                        
+                </li>
+
+            </ul>
+        </nav>
+        <div id="body" class="">
+            <!-- navbar navigation component -->
+            <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                <button type="button" id="sidebarCollapse" class="btn btn-light">               
+                    <i class="fas fa-bars"></i><span></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="#" id="nav1" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-link"></i> <span>Quick Links</span> <i style="font-size: 1.6em;" class="fas fa-caret-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end nav-link-menu" aria-labelledby="nav1">
+                                    <ul class="nav-list">
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-list"></i> Access Logs</a></li>
+                                        <div class="dropdown-divider"></div>
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-database"></i> Back ups</a></li>
+                                        <div class="dropdown-divider"></div>
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-cloud-download-alt"></i> Updates</a></li>
+                                        <div class="dropdown-divider"></div>
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-user-shield"></i> Roles</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-user"></i> <span>{% block user_name %}{% endblock %}</span> <i style="font-size: 1.6em;" class="fas fa-caret-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end nav-link-menu">
+                                    <ul class="nav-list">
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-address-card"></i> Profile</a></li>
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-envelope"></i> Messages</a></li>
+                                        <li><a href="" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a></li>                                        
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <div class="nav-dropdown">
+                                <a href="#" id="nav2" class="nav-item nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="fas fa-sign-out-alt"></i> <span>Log out</span> <i style="font-size: 1.6em;" class="fas fa-caret-down"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end nav-link-menu">
+                                    <ul class="nav-list">                                                                               
+                                        <li><a href="/log_out" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+            <!-- end of navbar navigation -->
+            <div class="content">
+                <div class="container">                    
+                    {% block cards %}{% endblock %} 
+                </div>
+            </div>               
+        </div>
+    </div>     
+</body>
+
+
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'assets/js/initiate-toast.js' %}"></script>    
+<script src="{% static 'assets/js/script.js' %}"></script>  
+
+
+</html>

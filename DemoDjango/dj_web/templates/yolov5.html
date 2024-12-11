@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block title %}{{title}}{% endblock %}
+{% block user_name %}{{user_name}}{% endblock %}
+
+{% block cards %}  
+
+<div class="row">
+    <div class="col-md-6 page-header">        
+        <h2 class="page-title">/{{title}}</h2><br>                        
+    <div>                       
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">Form - Food Detection</div>
+            <div class="card-body">                                
+                <div class="input-group mb-3">    
+                    <form id="uploadForm" enctype="multipart/form-data">                
+                        <h5 class="card-title">Step_01: 請點選「選擇檔案」(JPG)</h5><br>                                                                                                                                                         
+                        <input type="file" name="imageFile" id="imageFile"><br><br>
+                        <h5 class="card-title">Step_02: 請點選「執行」上傳圖檔及檢測</h5><br>                                                                                                                                               
+                        <input type="submit" value="執行">                        
+                    </form>
+                </div><br>
+                <div id="imageContainer"></div>                                                                                                                      
+            </div>            
+        </div>            
+    </div>   
+
+</div>
+
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/js/my_script.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+{% block title %}{{title}}{% endblock %}
+{% block user_name %}{{user_name}}{% endblock %}
+
+{% block cards %}  
+
+<div class="row">
+    <div class="col-md-6 page-header">        
+        <h2 class="page-title">/{{title}}</h2><br>                        
+    <div>                       
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">Form</div>
+            <div class="card-body">
+                <h5 class="card-title">請選擇模型及輸入變數(貸款人資訊)</h5><br>                                   
+                    <div class="mb-3">
+                        <label class="form-label">預測模型：</label><br>
+                        <input type="radio" id="ml_lg" name="ml_select" value="lg">
+                        <label for="option1">Logistic Regression</label>
+                        <input type="radio" id="ml_nb" name="ml_select" value="nb">
+                        <label for="option1">Naive Bayes</label>
+                        <input type="radio" id="ml_ann" name="ml_select" value="ann">
+                        <label for="option1">Artificial neural networks</label>                       
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">變數01 - 借款期間是否超過3年？(1:是，0:否)</label>
+                        <input id="f_islongloan" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label  class="form-label">變數02 - 借款金額(USD，整數，大於0)</label>
+                        <input id="f_loan_amnt" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">變數03 - 借款利率(例：5.88%輸入5.88)</label>
+                        <input id="f_int_rate" class="form-control">
+                    </div>                    
+                    <div class="mb-3">
+                        <label class="form-label">變數04 - 借款人年收入金額(USD，整數，大於0)</label>
+                        <input id="f_annual_inc" class="form-control">
+                    </div>                  
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-primary me-md-2" onclick="ml_predict();">Submit</button>
+                        <button class="btn btn-primary" onclick="ml_clean();">Clean</button>                        
+                    </div>                        
+                    <h6 id="ml_predict_result" style="color:blue;"></h6>
+            </div>            
+        </div>            
+    </div>   
+
+</div>
+
+{% load static %}
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="{% static 'assets/js/my_functions_01.js' %}"></script>
+
+{% endblock %}
