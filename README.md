@@ -47,7 +47,7 @@
 
 (5)選單四 - 信用評分預測(Credit Scorecards) 
 
-- 填寫變數資料送出便開始調用模型API運算，預測結果(分數、評級)以儀表盤呈現。此處Credit Scorecards之模型訓練及推論為另一專案(credit_scorecards_demo_01  [詳見](<https://github.com/qinglian1105/credit_scorecards_demo_01/tree/main>))。
+- 填寫變數資料送出便開始調用模型API運算，預測結果(分數、評級)於下方以藍色文字及儀表盤呈現。此處Credit Scorecards之模型訓練及推論為另一專案(credit_scorecards_demo_01  [詳見](<https://github.com/qinglian1105/credit_scorecards_demo_01/tree/main>))。
 
 ![avatar](./README_png/page_scorecard.png)
 
@@ -67,11 +67,12 @@
 - FastAPI建立不同功能的API接口，資料來自二個資料庫PostgreSQL及MongoDB，如："/api/default_info取得違約及非違約人數及金額，其他接口詳見程式碼。
 
 ![avatar](./README_png/page_api.png)
+
 <br>
 
-***
+---
 
-#### References
+#### **References**
 
 [1] [Getting started with Django](<https://www.djangoproject.com/start/>)
 

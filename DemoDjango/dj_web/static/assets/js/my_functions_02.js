@@ -1,16 +1,17 @@
 // Scorecard - clean input and output
 function scorecard_clean()
 {        
-   document.getElementById("annual_inc_bin").value="";
-   document.getElementById("loan_amnt_bin").value="";
-   document.getElementById("int_rate_bin").value="";  
-   document.querySelector("#purpose").value="";
-   document.querySelector("#grade").value="";
-   document.querySelector("#home_ownership").value="";
-   document.querySelector("#pub_rec_bankruptcies").value="";
-   var dom = document.getElementById("chart_container");
-   var myChart = echarts.init(dom);
-   myChart.clear();   
+    document.getElementById("annual_inc_bin").value="";
+    document.getElementById("loan_amnt_bin").value="";
+    document.getElementById("int_rate_bin").value="";  
+    document.querySelector("#purpose").value="";
+    document.querySelector("#grade").value="";
+    document.querySelector("#home_ownership").value="";
+    document.querySelector("#pub_rec_bankruptcies").value="";
+    document.getElementById("scorecard_outputs").innerHTML="";  
+    var dom = document.getElementById("chart_container");
+    var myChart = echarts.init(dom);
+    myChart.clear();     
 }
 
 // Scorecard - submit form data to API
@@ -42,6 +43,9 @@ function scorecard_predict()
     }).then(function (response){              
         let obj = response.data; 
         console.log("obj \n"+obj.score.toString()+"\n"+obj.rating);          
+        let outputs = JSON.stringify({score: parseInt(obj.score), 
+                                      level: obj.rating});                                      
+        document.getElementById("scorecard_outputs").innerHTML=outputs;          
         guage_chart(obj.score, obj.rating);           
     })                                        
 }
