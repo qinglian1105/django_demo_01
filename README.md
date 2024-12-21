@@ -22,11 +22,20 @@
 
 <h4 id="2">Ⅱ. 使用相關框架或套件</h4>
 
-|前端|Django、JavaScript、Boostrap、Chart.js、ECharts|
-|:-----|:-----|
-|後端|FastAPI、PostgreSQL、MongoDB|
-|其他|Scikit-learn、YOLOv5|
-<br>
+<table style="width:70%">
+  <tr style="font-weight:bold; background-color:transparent;">
+    <th>前端</th>
+    <th>Django、JavaScript、Boostrap、Chart.js、ECharts</th>   
+  </tr>
+  <tr style="font-weight:bold; background-color:transparent;">
+    <td>後端</td>
+    <td>FastAPI、PostgreSQL、MongoDB</td>    
+  </tr>
+  <tr style="font-weight:bold; background-color:transparent;">
+    <td>其他</td>
+    <td>Scikit-learn、YOLOv5</td>    
+  </tr>  
+</table><br>
 
 <h4 id="3">Ⅲ. 簡介</h4>
 1.架構<br>
