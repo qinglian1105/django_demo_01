@@ -7,11 +7,11 @@ folder_working/
 
 # Ignore .env files
 *.env
-*.env*
+*.env.*
 .env
-.env*
+.env.*
 **/.env
-**/.env*
+**/.env.*
 
 # Ignore pycache files
 __pycache__/

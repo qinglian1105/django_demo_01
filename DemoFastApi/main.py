@@ -33,5 +33,3 @@ async def read_root():
 async def read_tst():
     t = dt.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     return [{"Message": "Test Page", "DateTime": t}]
-
-# uvicorn main:app --host 0.0.0.0 --port 5001
