@@ -15,7 +15,7 @@ import os
 # Global variables
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
 PWD = os.getcwd()
-ENV_FILE_PATH = os.path.join(PWD, "setting", ".env.develop")
+ENV_FILE_PATH = os.path.join(PWD, "initialize", ".env.develop")
 load_dotenv(dotenv_path=ENV_FILE_PATH, override=True)
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALGORITHM = os.environ.get("ALGORITHM")

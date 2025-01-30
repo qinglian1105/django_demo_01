@@ -5,7 +5,7 @@ import os
 
 # Global variable
 PWD = os.getcwd()
-ENV_FILE_PATH = os.path.join(PWD, "setting", ".env.develop")
+ENV_FILE_PATH = os.path.join(PWD, "initialize", ".env.develop")
 load_dotenv(dotenv_path=ENV_FILE_PATH, override=True)
 HOST = os.environ.get("MG_HOST")
 USER = os.environ.get("MG_USERNAME")

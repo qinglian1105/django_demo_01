@@ -17,7 +17,7 @@ DB_INFO_COLS = [
     "row_size",
 ]
 PWD = os.getcwd()
-ENV_FILE_PATH = os.path.join(PWD, "setting", ".env.develop")
+ENV_FILE_PATH = os.path.join(PWD, "initialize", ".env.develop")
 load_dotenv(dotenv_path=ENV_FILE_PATH, override=True)
 HOST = os.environ.get("PG_HOST")
 USER = os.environ.get("PG_USER")
