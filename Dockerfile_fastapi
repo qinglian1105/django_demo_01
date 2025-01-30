@@ -1,11 +1,6 @@
 FROM python:3.10
+RUN mkdir /code
 WORKDIR /code
-COPY DemoFastApi/requirements.txt /code/requirements.txt
-COPY DemoFastApi/models_01 /code/models_01 
-COPY DemoFastApi/models_02 /code/models_02 
+COPY DemoFastApi/. /code/
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
-COPY DemoFastApi/get_pg_data.py /code
-COPY DemoFastApi/get_mongo_data.py /code
-COPY DemoFastApi/get_prediction.py /code
-COPY DemoFastApi/main.py /code
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "80"]

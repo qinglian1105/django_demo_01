@@ -15,7 +15,7 @@ function ml_predict()
     const base_url = 'http://backend-fastapi:5001';              
     axios({
         method: 'post',
-        url: base_url + "/api/ml_predict",
+        url: base_url + "/api/ml/ml_predict",
         headers: {'Content-Type': 'application/json'},                      
         data: post_data 
     }).then(function (response){              

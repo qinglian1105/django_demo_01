@@ -2,7 +2,7 @@
 const base_url = 'http://backend-fastapi:5001';
 
 // Call api: /api/default_info
-axios.get(base_url + "/api/default_info")
+axios.get(base_url + "/api/mg/default_info")
     .then(function (response){              
             let obj = response.data; 
             console.log(obj.count, obj.loan_amnt);          
@@ -10,7 +10,7 @@ axios.get(base_url + "/api/default_info")
          )                 
 
 // Call api: /api/default_age
-axios.get(base_url + "/api/default_age")
+axios.get(base_url + "/api/mg/default_age")
 .then(function (response){              
         let obj = response.data; 
         console.log(obj.age, obj.count, obj.loan, obj.income)          

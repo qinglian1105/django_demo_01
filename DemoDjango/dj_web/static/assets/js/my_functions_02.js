@@ -37,7 +37,7 @@ function scorecard_predict()
     const base_url = 'http://backend-fastapi:5001';                 
     axios({
         method: 'post',
-        url: base_url + "/api/scorecard_predict",
+        url: base_url + "/api/ml/scorecard_predict",
         headers: {'Content-Type': 'application/json'},                      
         data: post_data 
     }).then(function (response){              

@@ -16,7 +16,7 @@ function update_all(input)
     var post_data = JSON.stringify({yyyy: yyyy});
     
     // Four indexes
-    const m_path_list = ["/api/loan_amt","/api/loan_count","/api/default_amt","/api/default_count"];
+    const m_path_list = ["/api/pg/loan_amt","/api/pg/loan_count","/api/pg/default_amt","/api/pg/default_count"];
     const m_id_list = ["m01","m02","m03","m04"];    
     let i = 0;
     while (i < m_path_list.length)
@@ -40,7 +40,7 @@ function update_all(input)
     // Two charts
     axios({
         method: 'post',
-        url: base_url + "/api/month_loan",
+        url: base_url + "/api/pg/month_loan",
         headers: {'Content-Type': 'application/json'},                      
         data: post_data 
     }).then(function (response){                
@@ -52,7 +52,7 @@ function update_all(input)
     })    
     axios({
         method: 'post',
-        url: base_url + "/api/month_count",
+        url: base_url + "/api/pg/month_count",
         headers: {'Content-Type': 'application/json'},                      
         data: post_data 
     }).then(function (response){                
@@ -66,7 +66,7 @@ function update_all(input)
     // Two tables
     axios({
         method: 'post',
-        url: base_url + "/api/purpose",
+        url: base_url + "/api/pg/purpose",
         headers: {'Content-Type': 'application/json'},                      
         data: post_data 
     }).then(function (response){                
@@ -77,7 +77,7 @@ function update_all(input)
     })     
     axios({
         method: 'post',
-        url: base_url + "/api/occupation",
+        url: base_url + "/api/pg/occupation",
         headers: {'Content-Type': 'application/json'},                      
         data: post_data 
     }).then(function (response){                 

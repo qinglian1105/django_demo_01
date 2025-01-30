@@ -6,7 +6,7 @@
 ### **目錄** 
 
 * [Ⅰ. 目的](#1)
-* [Ⅱ. 使用相關框架或套件](#2)
+* [Ⅱ. 使用工具](#2)
 * [Ⅲ. 簡介](#3)
 * [Ⅳ. 網頁展示](#4)
 * [Ⅴ. References](#5)
@@ -19,7 +19,10 @@
 Django框架建立網站，並配合過去所學(前端、後端、資料庫…)，結合機器學習(Classification model、Object detection)及數據分析之應用。
 <br><br>
 
-<h4 id="2">Ⅱ. 使用相關框架或工具</h4>
+<h4 id="2">Ⅱ. 使用工具</h4>
+
+相關框架或套件如下。
+
 前端：Django、JavaScript、Boostrap、Chart.js、ECharts<br>
 後端：FastAPI、PostgreSQL、MongoDB<br>
 其他：Docker、Scikit-learn、YOLOv5
@@ -29,7 +32,7 @@ Django框架建立網站，並配合過去所學(前端、後端、資料庫…)
 
 1.架構<br>
 (1)前端使用Django web framework及JavaScript處理網頁，樣式套用Boostrap-simple-admin，圖表庫為Chart.js、ECharts。<br>
-(2)後端則以FastAPI建立API操作資料庫PostgreSQL及MongoDB、處理資料及模型推論運算，供前端調用渲染網頁。<br>
+(2)後端則以FastAPI建立API，操作資料庫PostgreSQL及MongoDB、處理資料及模型推論運算，供前端調用渲染網頁。並且，使用JWT(JSON Web Token)作登入驗證，<br>
 (3)最後，由Docker Compose佈署前端、後端、資料庫及相關服務。<br>
 
 2.資料<br>
@@ -116,10 +119,14 @@ Django框架建立網站，並配合過去所學(前端、後端、資料庫…)
 
 9.API接口<br>
 
-FastAPI建立不同功能的API接口，資料來自二個資料庫PostgreSQL及MongoDB，如："/api/default_info取得違約及非違約人數及金額，其他接口詳見程式碼(專案資料夾 DemoFastApi)。
+FastAPI建立不同功能的API接口，使用JWT作驗證，資料來自資料庫PostgreSQL及MongoDB，如：「/api/mg/default_info」取得違約及非違約人數及金額、「api/ml/ml_predict」使用機器學習模型預測違約可能性，其他接口詳見程式碼(專案資料夾 DemoFastApi)。<br>
 
+swagger文件頁面<br>
+![avatar](./README_png/page_api_docs.png)<br>
+
+「/api/mg/default_info」接口頁面<br>
 ![avatar](./README_png/page_api.png)
-
+<br>
 <br>
 
 ---
@@ -128,18 +135,18 @@ FastAPI建立不同功能的API接口，資料來自二個資料庫PostgreSQL及
 
 [1] [Getting started with Django](<https://www.djangoproject.com/start/>)
 
-[2] [pro-dev-ph/bootstrap-simple-admin-template](<https://github.com/pro-dev-ph/bootstrap-simple-admin-template>)
+[2] [OAuth2 with Password (and hashing), Bearer with JWT tokens](<https://fastapi.tiangolo.com/tutorial/security/oauth2-jwt/>)
 
-[3] [Chart.js](<https://www.chartjs.org/>)
+[3] [pro-dev-ph/bootstrap-simple-admin-template](<https://github.com/pro-dev-ph/bootstrap-simple-admin-template>)
 
-[4] [Apache ECharts](<https://echarts.apache.org/zh/index.html>)
+[4] [Chart.js](<https://www.chartjs.org/>)
 
-[5] [Lending Club Loan Data](<https://www.kaggle.com/datasets/adarshsng/lending-club-loan-data-csv/data>)
+[5] [Apache ECharts](<https://echarts.apache.org/zh/index.html>)
 
-[6] [Credit Risk Dataset](<https://www.kaggle.com/datasets/laotse/credit-risk-dataset/data>)
+[6] [Lending Club Loan Data](<https://www.kaggle.com/datasets/adarshsng/lending-club-loan-data-csv/data>)
 
-[7] [Logistic Regression in Building Credit Scorecard](<https://medium.com/@rachmanto.rian/logistic-regression-in-building-credit-scorecard-924bece9f953>)
+[7] [Credit Risk Dataset](<https://www.kaggle.com/datasets/laotse/credit-risk-dataset/data>)
 
-[8] [Step-by-Step: Deploy YOLOv5 Ultralytics Machine Learning Model with FastAPI](<https://medium.com/@auliyafirdaus03/step-by-step-deploy-yolov5-ultralytics-machine-learning-model-with-fastapi-ef6faacea4ee>)
+[8] [Logistic Regression in Building Credit Scorecard](<https://medium.com/@rachmanto.rian/logistic-regression-in-building-credit-scorecard-924bece9f953>)
 
-[9] [餃子の王將—台灣的貼文](<https://www.facebook.com/ohshotaiwan/posts/%E6%BC%A2%E7%A5%9E%E6%88%90%E5%8A%9F%E5%BA%97%E9%99%90%E5%AE%9A%E6%96%99%E7%90%86-%E5%A4%A7%E5%AE%B6%E4%BE%86%E9%A4%83%E5%AD%90%E3%81%AE%E7%8E%8B%E5%B0%87%E9%83%BD%E9%BB%9E%E4%BB%80%E9%BA%BC%E6%96%99%E7%90%86%E5%91%A2%E5%A6%82%E6%9E%9C%E6%AF%AB%E7%84%A1%E9%A0%AD%E7%B7%92%E7%9A%84%E8%A9%B1%E5%B0%8F%E7%B7%A8%E8%B6%85%E6%8E%A8%E8%96%A6%E6%96%B0%E6%89%8B%E5%85%A5%E9%96%80%E6%AC%BE%E7%8E%8B%E5%B0%87%E6%8B%89%E9%BA%B5%E5%A5%97%E9%A4%90%E7%8E%8B%E5%B0%87%E4%BA%BA%E6%B0%A3%E6%96%99%E7%90%86%E4%B8%80%E6%AC%A1%E6%94%B6%E9%9B%86%E7%8E%8B%E5%B0%87%E7%85%8E%E9%A4%83%E7%8E%8B%E5%B0%87%E7%82%92%E9%A3%AF%E7%8E%8B%E5%B0%87%E9%86%AC%E6%B2%B9%E8%B1%9A%E9%AA%A8%E6%8B%89%E9%BA%B5%E7%86%B1%E9%96%80%E8%8F%9C%E5%96%AE%E4%B8%80/380404612371913/>)
+[9] [Step-by-Step: Deploy YOLOv5 Ultralytics Machine Learning Model with FastAPI](<https://medium.com/@auliyafirdaus03/step-by-step-deploy-yolov5-ultralytics-machine-learning-model-with-fastapi-ef6faacea4ee>)
