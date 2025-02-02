@@ -19,7 +19,6 @@ ENV_FILE_PATH = os.path.join(PWD, "initialize", ".env.develop")
 load_dotenv(dotenv_path=ENV_FILE_PATH, override=True)
 SECRET_KEY = os.environ.get("SECRET_KEY")
 ALGORITHM = os.environ.get("ALGORITHM")
-DB_USER = pgdb_user()
 OAUTH2_SCHEME = OAuth2PasswordBearer(tokenUrl="token")
 
 
@@ -42,8 +41,8 @@ def get_user(db, username: str):
         return UserInDB(**user_dict)
 
 
-def authenticate_user(fake_db, username: str, password: str):
-    user = get_user(fake_db, username)
+def authenticate_user(real_db, username: str, password: str):
+    user = get_user(real_db, username)
     if not user:
         return False
     if not verify_password(password, user.hashed_password):
@@ -78,7 +77,8 @@ async def get_current_user(token: Annotated[str, Depends(OAUTH2_SCHEME)]):
         token_data = TokenData(username=username)
     except InvalidTokenError:
         raise credentials_exception
-    user = get_user(DB_USER, username=token_data.username)
+    db_user = pgdb_user()
+    user = get_user(db_user, username=token_data.username)
     if user is None:
         raise credentials_exception
     return user
@@ -96,7 +96,8 @@ async def get_current_active_user(
 async def login_for_access_token(
     form_data: Annotated[OAuth2PasswordRequestForm, Depends()],
 ) -> Token:
-    user = authenticate_user(DB_USER, form_data.username, form_data.password)
+    db_user = pgdb_user()
+    user = authenticate_user(db_user, form_data.username, form_data.password)
     if not user:
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

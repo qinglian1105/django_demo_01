@@ -367,5 +367,6 @@ def pgdb_user():
     except Exception as e:
         print(e)
     finally:
-        cursor.close()
-        conn.close()
+        if conn:
+            cursor.close()
+            conn.close()
