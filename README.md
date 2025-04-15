@@ -23,7 +23,7 @@ Django框架建立網站，並配合過去所學(前端、後端、資料庫…)
 
 相關框架或套件如下。
 
-前端：Django、JavaScript、Boostrap、Chart.js、ECharts<br>
+前端：Django、JavaScript、Bootstrap、Chart.js、ECharts<br>
 後端：FastAPI、PostgreSQL、MongoDB<br>
 其他：Docker、Scikit-learn、YOLOv5
 <br><br>
@@ -31,7 +31,7 @@ Django框架建立網站，並配合過去所學(前端、後端、資料庫…)
 <h4 id="3">Ⅲ. 簡介</h4>
 
 1.架構<br>
-(1)前端使用Django web framework及JavaScript處理網頁，樣式套用Boostrap-simple-admin，圖表庫為Chart.js、ECharts。<br>
+(1)前端使用Django web framework及JavaScript處理網頁，樣式套用Bootstrap-simple-admin，圖表庫為Chart.js、ECharts。<br>
 (2)後端則以FastAPI建立API，操作資料庫PostgreSQL及MongoDB、處理資料及模型推論運算，供前端調用渲染網頁。並且，使用JWT(JSON Web Token)作登入驗證，<br>
 (3)最後，由Docker Compose佈署前端、後端、資料庫及相關服務。<br>
 
@@ -65,7 +65,7 @@ Django框架建立網站，並配合過去所學(前端、後端、資料庫…)
 
 2.選單一 - 首頁<br>
 
-如前述，首頁作介簡說明，頁面為左方導覽列，右方呈現內容。樣式套用Bootsrap-simple-admin ( [詳見](<https://github.com/pro-dev-ph/bootstrap-simple-admin-template>) )作簡化。
+如前述，首頁作介簡說明，頁面為左方導覽列，右方呈現內容。樣式套用Bootstrap-simple-admin ( [詳見](<https://github.com/pro-dev-ph/bootstrap-simple-admin-template>) )作簡化。
 
 ![avatar](./README_png/page_home.png) 
 <br><br>
