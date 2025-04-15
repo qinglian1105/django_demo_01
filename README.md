@@ -129,6 +129,10 @@ swagger文件頁面<br>
 <br>
 <br>
 
+__以上，一個Web Development例子使用前端、後端相關技術，以展現數據分析、機器學習之應用。__ <br>
+(相似專案 [vue3_echarts_demo_01](<https://github.com/qinglian1105/vue3_echarts_demo_01>) 請參考) 
+<br><br>
+
 ---
 
 <h4 id="5">Ⅴ. References</h4>
